@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ma’rifat Avlodi — Bilim va Innovatsiya</title>
+  <meta name="description" content="O‘zbekiston o‘quvchilari uchun bilim, IT va sun’iy intellekt platformasi.">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f8ff;
+      color: #172554;
+      line-height: 1.6;
+    }
+    header {
+      background: white;
+      padding: 16px 6%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      box-shadow: 0 2px 12px #0000000c;
+    }
+    .logo { font-size: 21px; font-weight: bold; color: #1d4ed8; }
+    .hero {
+      padding: 75px 7% 65px;
+      text-align: center;
+      background: linear-gradient(135deg, #dbeafe, #eff6ff, #e0e7ff);
+    }
+    .tag {
+      display: inline-block;
+      background: white;
+      color: #1d4ed8;
+      padding: 7px 15px;
+      border-radius: 30px;
+      font-size: 13px;
+      margin-bottom: 20px;
+    }
+    h1 { font-size: clamp(32px, 6vw, 54px); line-height: 1.15; margin-bottom: 20px; }
+    .hero p { max-width: 650px; margin: 0 auto 28px; color: #475569; font-size: 17px; }
+    .btn {
+      display: inline-block;
+      padding: 13px 23px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      margin: 5px;
+    }
+    .primary { background: #2563eb; color: white; }
+    .secondary { background: white; color: #1d4ed8; border: 1px solid #bfdbfe; }
+    section { padding: 50px 7%; }
+    .section-title { text-align: center; font-size: 29px; margin-bottom: 10px; }
+    .section-desc { text-align: center; color: #64748b; margin-bottom: 30px; }
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; }
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 16px;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 5px 20px #1e3a8a08;
+    }
+    .card .emoji { font-size: 32px; margin-bottom: 12px; }
+    .card h3 { margin-bottom: 8px; }
+    .card p { color: #64748b; font-size: 14px; }
+    .notice {
+      background: #dbeafe;
+      border-radius: 16px;
+      padding: 28px;
+      text-align: center;
+    }
+    footer { text-align: center; padding: 25px; background: #172554; color: #dbeafe; font-size: 13px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">🎓 Ma’rifat Avlodi</div>
+    <a class="btn primary" href="#bolimlar">Boshlash</a>
+  </header>
+
+  <main>
+    <div class="hero">
+      <div class="tag">BILIM • INNOVATSIYA • KELAJAK</div>
+      <h1>Kelajak sari bilim bilan!</h1>
+      <p>O‘zbekiston o‘quvchilari uchun ta’lim, zamonaviy texnologiyalar, IT va sun’iy intellekt olamiga yo‘l ochuvchi platforma.</p>
+      <a class="btn primary" href="#bolimlar">Imkoniyatlarni ko‘rish ↓</a>
+      <a class="btn secondary" href="#loyiha">Loyiha haqida</a>
+    </div>
+
+    <section id="bolimlar">
+      <h2 class="section-title">Bilim olish uchun barcha imkoniyatlar</h2>
+      <p class="section-desc">O‘rganing, sinab ko‘ring va o‘z mahoratingizni rivojlantiring.</p>
+      <div class="cards">
+        <div class="card">
+          <div class="emoji">📚</div>
+          <h3>O‘quv resurslari</h3>
+          <p>Fanlar bo‘yicha foydali materiallar va o‘rganish uchun manbalar.</p>
+        </div>
+        <div class="card">
+          <div class="emoji">📝</div>
+          <h3>Testlar va mashqlar</h3>
+          <p>Bilimingizni tekshirish va yangi mavzularni mustahkamlash.</p>
+        </div>
+        <div class="card">
+          <div class="emoji">💻</div>
+          <h3>IT va dasturlash</h3>
+          <p>Raqamli ko‘nikmalar va dasturlash asoslarini o‘rganish.</p>
+        </div>
+        <div class="card">
+          <div class="emoji">🤖</div>
+          <h3>Sun’iy intellekt</h3>
+          <p>AI imkoniyatlari bilan tanishish va undan to‘g‘ri foydalanishni o‘rganish.</p>
+        </div>
+        <div class="card">
+          <div class="emoji">📅</div>
+          <h3>O‘quv rejalashtiruvchi</h3>
+          <p>Darslar, uy vazifalari va maqsadlaringizni tartibga solish.</p>
+        </div>
+        <div class="card">
+          <div class="emoji">🌟</div>
+          <h3>Shaxsiy rivojlanish</h3>
+          <p>Yangi ko‘nikmalarni shakllantirish va o‘z ustingizda ishlash.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="loyiha">
+      <div class="notice">
+        <h2>Har bir o‘quvchi uchun yangi imkoniyat</h2>
+        <p style="margin-top:10px;color:#475569">Ma’rifat Avlodi — bilimli, ijodkor va texnologiyalardan xabardor yoshlar uchun yaratilayotgan ta’lim loyihasi.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 Ma’rifat Avlodi. Bilim • Innovatsiya • Kelajak
+  </footer>
+</body>
+</html>
