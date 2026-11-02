@@ -71,7 +71,7 @@ document.getElementById("form").addEventListener("submit", async function(e){
 
   if(!API_URL){
     result.style.color = "#b45309";
-    result.textContent = "Ro‘yxatdan o‘tish tizimi hali ulanmagan. Tez orada ishga tushadi.";
+    result.textContent = "Ro‘yxatdan o‘tish tizimi hali ulanmagan. Tez orada ishga tushadi."; 
     return;
   }
 
