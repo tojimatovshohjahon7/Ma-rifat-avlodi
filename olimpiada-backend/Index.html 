@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ma’rifat Avlodi | Olimpiada</title>
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#f2f5fa;
+  color:#17233c;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+.card{
+  background:white;
+  width:100%;
+  max-width:430px;
+  padding:28px;
+  border-radius:18px;
+  box-shadow:0 8px 35px #15294a18;
+}
+.logo{text-align:center;font-size:38px}
+h2{text-align:center;margin-bottom:8px}
+p{text-align:center;color:#68758b;font-size:14px}
+input{
+  width:100%;padding:14px;margin:8px 0;
+  border:1px solid #dce2ec;border-radius:9px;
+  font-size:15px;
+}
+button{
+  width:100%;padding:15px;margin-top:12px;
+  border:0;border-radius:9px;background:#174ea6;
+  color:white;font-size:16px;font-weight:bold;
+}
+button:disabled{opacity:.6}
+#result{text-align:center;margin-top:15px;font-weight:bold}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="logo">🎓</div>
+  <h2>MA’RIFAT AVLODI</h2>
+  <p>Umumiy bilimlar olimpiadasi</p>
+
+  <form id="form">
+    <input name="name" placeholder="Ism va familiyangiz" required>
+    <input name="school" placeholder="Maktab nomi yoki raqami" required>
+    <input name="grade" placeholder="Sinfingiz (masalan, 9-A)" required>
+    <input name="code" placeholder="Ishtirokchi kodi" required>
+    <button id="submit" type="submit">Ro‘yxatdan o‘tish</button>
+  </form>
+  <div id="result"></div>
+</div>
+
+<script>
+document.getElementById('form').addEventListener('submit', function(e){
+  e.preventDefault();
+
+  const button = document.getElementById('submit');
+  const result = document.getElementById('result');
+  const data = Object.fromEntries(new FormData(this));
+
+  button.disabled = true;
+  button.textContent = 'Yuborilmoqda...';
+  result.textContent = '';
+
+  google.script.run
+    .withSuccessHandler(function(message){
+      result.textContent = message;
+      result.style.color = 'green';
+      button.textContent = 'Ro‘yxatdan o‘tildi';
+    })
+    .withFailureHandler(function(error){
+      result.textContent = error.message;
+      result.style.color = 'red';
+      button.disabled = false;
+      button.textContent = 'Ro‘yxatdan o‘tish';
+    })
+    .registerStudent(data);
+});
+</script>
+</body>
+</html>
