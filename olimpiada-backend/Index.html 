@@ -8,46 +8,44 @@
 <style>
 *{box-sizing:border-box}
 body{
-  margin:0;
+  margin:0;padding:20px;min-height:100vh;
+  display:flex;align-items:center;justify-content:center;
   font-family:Arial,sans-serif;
-  background:#f2f5fa;
+  background:linear-gradient(135deg,#eaf1ff,#f7f9fc);
   color:#17233c;
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
 }
 .card{
-  background:white;
-  width:100%;
-  max-width:430px;
-  padding:28px;
-  border-radius:18px;
-  box-shadow:0 8px 35px #15294a18;
+  width:100%;max-width:460px;background:white;
+  padding:30px;border-radius:20px;
+  box-shadow:0 12px 40px #17345b18;
 }
-.logo{text-align:center;font-size:38px}
-h2{text-align:center;margin-bottom:8px}
-p{text-align:center;color:#68758b;font-size:14px}
+.logo{text-align:center;font-size:42px}
+h2{text-align:center;margin:12px 0 6px}
+.subtitle{text-align:center;color:#718096;font-size:14px}
+.line{height:3px;background:#174ea6;width:55px;margin:18px auto 24px;border-radius:5px}
 input{
-  width:100%;padding:14px;margin:8px 0;
-  border:1px solid #dce2ec;border-radius:9px;
-  font-size:15px;
+  width:100%;padding:15px;margin:7px 0;
+  border:1px solid #dce3ee;border-radius:10px;
+  font-size:15px;outline:none;
 }
+input:focus{border-color:#174ea6}
 button{
-  width:100%;padding:15px;margin-top:12px;
-  border:0;border-radius:9px;background:#174ea6;
+  width:100%;padding:15px;margin-top:14px;
+  border:0;border-radius:10px;background:#174ea6;
   color:white;font-size:16px;font-weight:bold;
+  cursor:pointer;
 }
 button:disabled{opacity:.6}
-#result{text-align:center;margin-top:15px;font-weight:bold}
+#result{text-align:center;margin-top:16px;font-size:14px}
+.note{text-align:center;color:#8792a5;font-size:12px;margin-top:18px}
 </style>
 </head>
 <body>
 <div class="card">
   <div class="logo">🎓</div>
   <h2>MA’RIFAT AVLODI</h2>
-  <p>Umumiy bilimlar olimpiadasi</p>
+  <p class="subtitle">Umumiy bilimlar olimpiadasi</p>
+  <div class="line"></div>
 
   <form id="form">
     <input name="name" placeholder="Ism va familiyangiz" required>
@@ -56,35 +54,51 @@ button:disabled{opacity:.6}
     <input name="code" placeholder="Ishtirokchi kodi" required>
     <button id="submit" type="submit">Ro‘yxatdan o‘tish</button>
   </form>
+
   <div id="result"></div>
+  <div class="note">Ma’rifat Avlodi — bilim va kelajak sari</div>
 </div>
 
 <script>
-document.getElementById('form').addEventListener('submit', function(e){
+const API_URL = ""; // Keyin Google Apps Script havolasini kiritamiz
+
+document.getElementById("form").addEventListener("submit", async function(e){
   e.preventDefault();
 
-  const button = document.getElementById('submit');
-  const result = document.getElementById('result');
+  const button = document.getElementById("submit");
+  const result = document.getElementById("result");
   const data = Object.fromEntries(new FormData(this));
 
-  button.disabled = true;
-  button.textContent = 'Yuborilmoqda...';
-  result.textContent = '';
+  if(!API_URL){
+    result.style.color = "#b45309";
+    result.textContent = "Ro‘yxatdan o‘tish tizimi hali ulanmagan. Tez orada ishga tushadi.";
+    return;
+  }
 
-  google.script.run
-    .withSuccessHandler(function(message){
-      result.textContent = message;
-      result.style.color = 'green';
-      button.textContent = 'Ro‘yxatdan o‘tildi';
-    })
-    .withFailureHandler(function(error){
-      result.textContent = error.message;
-      result.style.color = 'red';
-      button.disabled = false;
-      button.textContent = 'Ro‘yxatdan o‘tish';
-    })
-    .registerStudent(data);
+  button.disabled = true;
+  button.textContent = "Yuborilmoqda...";
+  result.textContent = "";
+
+  try{
+    const response = await fetch(API_URL,{
+      method:"POST",
+      body:JSON.stringify(data)
+    });
+    const answer = await response.json();
+
+    result.style.color = answer.success ? "green" : "red";
+    result.textContent = answer.message || "Javob olindi.";
+
+    if(answer.success) this.reset();
+  }catch(error){
+    result.style.color = "red";
+    result.textContent = "Ulanishda xatolik. Qayta urinib ko‘ring.";
+  }
+
+  button.disabled = false;
+  button.textContent = "Ro‘yxatdan o‘tish";
 });
 </script>
 </body>
 </html>
+
