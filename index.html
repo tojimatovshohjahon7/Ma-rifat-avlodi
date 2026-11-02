@@ -1,0 +1,443 @@
+
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ma’rifat Avlodi — Bilim va Innovatsiya</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f8ff;
+  color: #172554;
+  line-height: 1.6;
+}
+
+header {
+  background: white;
+  padding: 16px 6%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 12px #0000000c;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logo {
+  font-size: 21px;
+  font-weight: bold;
+  color: #1d4ed8;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 22px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+.primary {
+  background: #2563eb;
+  color: white;
+}
+
+.secondary {
+  background: white;
+  color: #1d4ed8;
+  border: 1px solid #bfdbfe;
+}
+
+.hero {
+  padding: 75px 7% 65px;
+  text-align: center;
+  background: linear-gradient(135deg,#dbeafe,#eff6ff,#e0e7ff);
+}
+
+.tag {
+  display: inline-block;
+  background: white;
+  color: #1d4ed8;
+  padding: 7px 15px;
+  border-radius: 30px;
+  margin-bottom: 20px;
+  font-size: 13px;
+}
+
+h1 {
+  font-size: clamp(32px,6vw,54px);
+  line-height: 1.15;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  max-width: 650px;
+  margin: auto auto 28px;
+  color: #475569;
+  font-size: 17px;
+}
+
+section {
+  padding: 50px 7%;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 29px;
+  margin-bottom: 10px;
+}
+
+.section-desc {
+  text-align: center;
+  color: #64748b;
+  margin-bottom: 30px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+  gap: 18px;
+}
+
+.card {
+  background: white;
+  padding: 25px;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 5px 20px #1e3a8a08;
+  transition: .25s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px #1e3a8a15;
+}
+
+.emoji {
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+
+.card h3 {
+  margin-bottom: 8px;
+}
+
+.card p {
+  color: #64748b;
+  font-size: 14px;
+  margin-bottom: 18px;
+}
+
+.enter-btn {
+  width: 100%;
+  padding: 11px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 9px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.enter-btn:hover {
+  background: #1d4ed8;
+}
+
+/* OCHILADIGAN OYNA */
+
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(15,23,42,.65);
+  z-index: 100;
+  justify-content: center;
+  align-items: center;
+  padding: 18px;
+}
+
+.modal.active {
+  display: flex;
+}
+
+.modal-content {
+  background: white;
+  width: 100%;
+  max-width: 500px;
+  padding: 30px;
+  border-radius: 20px;
+  position: relative;
+  animation: appear .25s ease;
+  max-height: 85vh;
+  overflow-y: auto;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.close {
+  position: absolute;
+  right: 18px;
+  top: 12px;
+  border: none;
+  background: #eff6ff;
+  color: #1d4ed8;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  font-size: 23px;
+  cursor: pointer;
+}
+
+.modal-emoji {
+  font-size: 45px;
+  margin-bottom: 12px;
+}
+
+.modal-content h2 {
+  margin-bottom: 12px;
+  color: #1d4ed8;
+}
+
+.modal-content p {
+  color: #64748b;
+  margin-bottom: 18px;
+}
+
+.modal-info {
+  background: #eff6ff;
+  padding: 15px;
+  border-radius: 12px;
+  color: #1e40af;
+  margin-bottom: 20px;
+}
+
+.notice {
+  background: #dbeafe;
+  border-radius: 16px;
+  padding: 28px;
+  text-align: center;
+}
+
+footer {
+  text-align: center;
+  padding: 25px;
+  background: #172554;
+  color: #dbeafe;
+  font-size: 13px;
+}
+
+@media(max-width:500px) {
+  .logo { font-size: 17px; }
+  .hero { padding: 55px 5%; }
+  .modal-content { padding: 25px 20px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">💡 Ma’rifat Avlodi</div>
+  <a class="btn primary" href="#bolimlar">Boshlash</a>
+</header>
+
+<main>
+
+<div class="hero">
+  <div class="tag">BILIM • INNOVATSIYA • KELAJAK</div>
+  <h1>Kelajak sari bilim bilan!</h1>
+  <p>
+    O‘zbekiston o‘quvchilari uchun ta’lim,
+    zamonaviy texnologiyalar, IT va sun’iy
+    intellekt olamiga yo‘l ochuvchi platforma.
+  </p>
+  <a class="btn primary" href="#bolimlar">Imkoniyatlarni ko‘rish ↓</a>
+  <a class="btn secondary" href="#loyiha">Loyiha haqida</a>
+</div>
+
+<section id="bolimlar">
+
+<h2 class="section-title">Bilim olish uchun barcha imkoniyatlar</h2>
+<p class="section-desc">
+O‘rganing, sinab ko‘ring va o‘z mahoratingizni rivojlantiring.
+</p>
+
+<div class="cards">
+
+<div class="card">
+<div class="emoji">📚</div>
+<h3>O‘quv resurslari</h3>
+<p>Fanlar bo‘yicha foydali materiallar va o‘quv manbalari.</p>
+<button class="enter-btn" onclick="openModal(0)">Kirish →</button>
+</div>
+
+<div class="card">
+<div class="emoji">📝</div>
+<h3>Testlar va mashqlar</h3>
+<p>Bilimingizni tekshirish va yangi mavzularni mustahkamlash.</p>
+<button class="enter-btn" onclick="openModal(1)">Kirish →</button>
+</div>
+
+<div class="card">
+<div class="emoji">💻</div>
+<h3>IT va dasturlash</h3>
+<p>Raqamli ko‘nikmalar va dasturlash asoslarini o‘rganish.</p>
+<button class="enter-btn" onclick="openModal(2)">Kirish →</button>
+</div>
+
+<div class="card">
+<div class="emoji">🤖</div>
+<h3>Sun’iy intellekt</h3>
+<p>AI imkoniyatlari bilan tanishish va undan foydalanishni o‘rganish.</p>
+<button class="enter-btn" onclick="openModal(3)">Kirish →</button>
+</div>
+
+<div class="card">
+<div class="emoji">📅</div>
+<h3>O‘quv rejalashtiruvchi</h3>
+<p>Darslar, uy vazifalari va maqsadlaringizni tartibga solish.</p>
+<button class="enter-btn" onclick="openModal(4)">Kirish →</button>
+</div>
+
+<div class="card">
+<div class="emoji">🌟</div>
+<h3>Shaxsiy rivojlanish</h3>
+<p>Yangi ko‘nikmalarni shakllantirish va o‘z ustingizda ishlash.</p>
+<button class="enter-btn" onclick="openModal(5)">Kirish →</button>
+</div>
+
+</div>
+</section>
+
+<section id="loyiha">
+<div class="notice">
+<h2>Har bir o‘quvchi uchun yangi imkoniyat</h2>
+<p style="margin-top:10px;color:#475569">
+Ma’rifat Avlodi — bilimli, ijodkor va
+texnologiyalardan xabardor yoshlar uchun yaratilayotgan ta’lim loyihasi.
+</p>
+</div>
+</section>
+
+</main>
+
+<!-- UMUMIY MODAL OYNA -->
+
+<div class="modal" id="mainModal" onclick="outsideClose(event)">
+  <div class="modal-content">
+
+    <button class="close" onclick="closeModal()">×</button>
+
+    <div class="modal-emoji" id="modalEmoji">📚</div>
+    <h2 id="modalTitle">Bo‘lim nomi</h2>
+    <p id="modalDescription">Bo‘lim haqida ma’lumot.</p>
+
+    <div class="modal-info" id="modalInfo">
+      Ma’rifat Avlodiga xush kelibsiz!
+    </div>
+
+    <button class="btn primary" onclick="closeModal()">
+      Yopish
+    </button>
+
+  </div>
+</div>
+
+<footer>
+© 2026 Ma’rifat Avlodi. Bilim • Innovatsiya • Kelajak
+</footer>
+
+<script>
+
+const sections = [
+  {
+    emoji: "📚",
+    title: "O‘quv resurslari",
+    description: "Bu bo‘limda o‘quvchilar uchun fanlar bo‘yicha elektron kitoblar, darsliklar, qo‘llanmalar va foydali materiallar jamlanadi.",
+    info: "Maqsad: bilim olish uchun kerakli resurslarni bir joyga to‘plash."
+  },
+  {
+    emoji: "📝",
+    title: "Testlar va mashqlar",
+    description: "Turli fanlardan testlar, amaliy mashqlar va bilimni mustahkamlash uchun topshiriqlar.",
+    info: "Maqsad: o‘quvchilarning bilim darajasini tekshirish."
+  },
+  {
+    emoji: "💻",
+    title: "IT va dasturlash",
+    description: "HTML, CSS, JavaScript, kompyuter savodxonligi va dasturlash asoslarini o‘rganish.",
+    info: "Maqsad: yoshlarning raqamli ko‘nikmalarini rivojlantirish."
+  },
+  {
+    emoji: "🤖",
+    title: "Sun’iy intellekt",
+    description: "Sun’iy intellekt, AI vositalari, prompt yozish va zamonaviy texnologiyalar bilan tanishish.",
+    info: "Maqsad: sun’iy intellektdan to‘g‘ri va samarali foydalanish."
+  },
+  {
+    emoji: "📅",
+    title: "O‘quv rejalashtiruvchi",
+    description: "Dars jadvali, uy vazifalari, kundalik rejalar va shaxsiy maqsadlarni tartibga solish.",
+    info: "Maqsad: vaqtni samarali boshqarishga yordam berish."
+  },
+  {
+    emoji: "🌟",
+    title: "Shaxsiy rivojlanish",
+    description: "Kitobxonlik, ijodkorlik, liderlik, yangi ko‘nikmalar va kelajak kasblari haqida ma’lumotlar.",
+    info: "Maqsad: o‘quvchilarning shaxsiy salohiyatini rivojlantirish."
+  }
+];
+
+function openModal(index) {
+  const item = sections[index];
+
+  document.getElementById("modalEmoji").textContent = item.emoji;
+  document.getElementById("modalTitle").textContent = item.title;
+  document.getElementById("modalDescription").textContent = item.description;
+  document.getElementById("modalInfo").textContent = item.info;
+
+  document.getElementById("mainModal").classList.add("active");
+  document.body.style.overflow = "hidden";
+}
+
+function closeModal() {
+  document.getElementById("mainModal").classList.remove("active");
+  document.body.style.overflow = "";
+}
+
+function outsideClose(event) {
+  if (event.target.id === "mainModal") {
+    closeModal();
+  }
+}
+
+document.addEventListener("keydown", function(event) {
+  if (event.key === "Escape") {
+    closeModal();
+  }
+});
+
+</script>
+
+</body>
+</html>
